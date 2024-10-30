@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Мачове</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="left-section">
+                <img src="images/etros-150x150.png" alt="Team Logo" class="team-logo">
+                <h1>Етрос</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Начало</a></li>
+                    <li><a href="team.html">Отбор</a></li>
+                    <li><a href="schedule.html">График</a></li>
+                    <li><a href="contact.html">Контакти</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Buttons for Schedule Filters -->
+    <section id="schedule-buttons">
+        <div class="container">
+            <button class="btn-schedule" id="btn-upcoming">Предстоящи</button>
+            <button class="btn-schedule" id="btn-past">Минали</button>
+            <button class="btn-schedule" id="btn-history">История</button>
+        </div>
+    </section>
+    
+    <section id="schedule">
+        <div class="container">
+            <h2>Предстоящи мачове</h2>
+    
+            <!-- Game Blocks with data-category -->
+            <div class="game-block" data-category="upcoming">
+                <div class="game-date">Ноември 16, 2024 - 18:00</div>
+                <div class="teams">
+                    <div class="team">
+                        <img src="images/etros-150x150.png" alt="Etros Team Logo">
+                        <h3>Етрос</h3>
+                        <a href="team-etros.html" class="btn-team">Повече информация</a>
+                    </div>
+                    <div class="vs"><h3>VS</h3></div>
+                    <div class="team">
+                        <img src="images/dunav-ruse-300x300.png" alt="Dragons Team Logo">
+                        <h3>Дунав Русе 2016 Б</h3>
+                        <a href="team-dragons.html" class="btn-team">Повече информация</a>
+                    </div>
+                </div>
+                <div class="game-location">Стадион "Ивайло", гр. Велико Търново</div>
+            </div>
+    
+            <!-- More Game Blocks with different data-category values like "past" or "history" -->
+            <!-- Example Past Game Block -->
+            <div class="game-block" data-category="past">
+                <div class="game-date">Октомври 16, 2024 - 18:00</div>
+                <div class="teams">
+                    <div class="team">
+                        <img src="images/etros-150x150.png" alt="Etros Team Logo">
+                        <h3>Етрос</h3>
+                        <span class="score">51</span>
+                        <a href="team-etros.html" class="btn-team">Повече информация</a>
+                    </div>
+                    <div class="vs"><h3>VS</h3></div>
+                    <div class="team">
+                        <img src="images/aleko-svishtov-300x300.png" alt="Another Team Logo">
+                        <h3>Алеко Свищов</h3>
+                        <span class="score">67</span>
+                        <a href="team-other.html" class="btn-team">Повече информация</a>
+                    </div>
+                </div>
+                <div class="game-location">Стадион "Ивайло", гр. Велико Търново</div>
+            </div>
+    
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Етрос | Автор: Dimitar Rachev</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    // Select buttons and match blocks
+    const buttons = document.querySelectorAll(".btn-schedule");
+    const gameBlocks = document.querySelectorAll(".game-block");
+
+    // Function to show matches based on category
+    function showMatches(category) {
+        gameBlocks.forEach(block => {
+            if (block.getAttribute("data-category") === category) {
+                block.style.display = "block";
+            } else {
+                block.style.display = "none";
+            }
+        });
+    }
+
+    // Set default view to "upcoming"
+    showMatches("upcoming");
+
+    // Add event listeners to each button
+    buttons.forEach(button => {
+        button.addEventListener("click", function () {
+            const category = this.id.replace("btn-", ""); // Get category from button ID
+            showMatches(category);
+        });
+    });
+});
+
+    </script>
+</body>
+</html>
